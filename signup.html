@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background: rgb(221, 230, 248);
+    }
+    .container{
+        width: 500px;
+        height: 650px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border-radius: 12px;
+        background: white;
+    }
+    .container .box h1{
+        text-align: center;
+        margin: 20px 0;
+        color: rgb(49, 79, 145);
+        font-family: sans-serif;
+    }
+    .container .box p{
+        text-align: center;
+        font-family: sans-serif;
+        margin-bottom: 20px;
+        color: rgb(49, 79, 145);
+    }
+    .container .box form input{
+        width: 400px;
+        border-radius: 8px;
+        border: 1px solid rgb(49, 79, 145);
+        outline: none;
+        color: rgb(49, 79, 145);
+        padding: 15px 10px;
+        margin-bottom: 20px;
+    }
+    .container .box form input[type=submit]{
+        width: 400px;
+        border-radius: 8px;
+        outline: none;
+        color: white;
+        font-weight: bold;
+        font-family: Arial;
+        cursor: pointer;
+        background: rgb(49, 82, 126);
+        padding: 15px 10px;
+        margin-bottom: 20px;
+    }
+    .container .box form input::placeholder{
+        color: rgb(49, 79, 145);
+    }
+    .container .box form #eye{
+        position: absolute;
+        right: 60px;
+        margin-top: -55px;
+    }
+    .container .box form p a{
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+    .container .box form strong{
+        position: relative;
+        font-family: Arial;
+        color: rgb(49, 82, 126);
+    }
+   .container .box form strong:before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 170px;
+    height: 1px;
+    left: 30px;
+    top: 50%;
+    background: rgb(49, 82, 126);
+   }
+   .container .box form strong:after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 170px;
+    height: 1px;
+    right: 30px;
+    top: 50%;
+    background: rgb(49, 82, 126);
+   }
+   .container .box form .providers{
+    margin-top: 30px;
+   }
+   .container .box form .providers img{
+    width: 20px;
+    height: 20px;
+    margin: 0 15px;
+    cursor: pointer;
+   }
+   .container .box form button{
+    background: none;
+    border: none;
+    outline: none;
+    margin-top: 30px;
+   }
+   @media(max-width: 515px){
+    .container{
+        width: 400px;
+    }
+    .container .box form input{
+        width: 380px;
+    }
+    .container .box form input[type=submit]{
+        width: 380px;
+    }
+    .container .box form #eye{
+        position: absolute;
+        right: 20px;
+        margin-top: -55px;
+    }
+   }
+
+
+   @media(max-width: 420px){
+    .container{
+        width: 300px;
+        height: 680px;
+    }
+    .container .box form input{
+        width: 280px;
+    }
+    .container .box form input[type=submit]{
+        width: 280px;
+    }
+    .container .box form #eye{
+        position: absolute;
+        right: 20px;
+        margin-top: -55px;
+    }
+    .container .box form strong:before{
+        width: 120px;
+   }
+   .container .box form strong:after{
+        width: 120px;
+   }
+   }
+
+
+   @media(max-width: 320px){
+    .container{
+        width: 260px;
+        height: 680px;
+    }
+    .container .box form input{
+        width: 240px;
+    }
+    .container .box form input[type=submit]{
+        width: 240px;
+    }
+    .container .box form #eye{
+        position: absolute;
+        right: 20px;
+        margin-top: -55px;
+    }
+    .container .box form strong:before{
+        width: 90px;
+   }
+   .container .box form strong:after{
+        width: 90px;
+   }
+   .container .box p{
+        padding: 0;
+    }
+   }
+</style>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Sign Up</h1>
+            <p>Let's get started with your 30 days free trial</p>
+            <center>
+                <form action="" method="post" autocomplete="off">
+                    <input type="text" name="name" placeholder="Name"><br>
+                    <input type="text" name="username" placeholder="Username"><br>
+                    <input type="email" name="email" placeholder="Email"><br>
+                    <input type="password" name="password" id="password" placeholder="Password"><br>
+                    <span><img src="assets/eyes.png" alt="" id="eye"></span>
+                    <input type="submit" name="submit" value="Sign Up">
+                    <p>Already have an account <a href="signin.html"> Sign In</a></p>
+                    <strong>or</strong>
+                    <div class="providers">
+                        <img src="assets/facebook.png" alt="">
+                        <img src="assets/twitter.png" alt="">
+                        <img src="assets/google.png" alt="">
+                        <img src="assets/apple.png" alt="">
+                    </div>
+                    <button>By signing up to create an account i accept company's <p>Terms of use and Privacy Policy</p></button>
+                </form>
+            </center>
+        </div>
+    </div>
+
+
+    <script>
+        var password = document.getElementById("password");
+        var eye = document.getElementById("eye");
+
+        eye.onclick = () => {
+            if(password.type == "password"){
+                password.type = "text";
+            }
+            else{
+                password.type = "password";
+            }
+        }
+    </script>
+    
+</body>
+</html>

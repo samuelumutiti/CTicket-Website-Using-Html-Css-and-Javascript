@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        height: 100vh;
+        background: rgb(0, 6, 14);
+    }
+    .container .top-navbar{
+        width: 100%;
+        height: 70px;
+        display: flex;
+        position: fixed;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        background: rgb(19, 48, 145);
+    }
+    .container .top-navbar .left-side h1{
+        color: white;
+        font-family: Arial;
+    }
+    .container .top-navbar .center-side .list-links ul{
+        list-style: none;
+    }
+    .container .top-navbar .center-side .list-links ul:after{
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        top: 50px;
+        cursor: pointer;
+        right: 50%;
+        background: white;
+    }
+    .container .top-navbar .center-side .list-links ul li{
+        display: inline-block;
+        padding: 0 20px;
+        margin-left: -70px;
+    }
+    .container .top-navbar .center-side .list-links ul li a{
+        text-decoration: none;
+        color: white;
+        font-family: Arial;
+    }
+    .container .top-navbar .right-side .user-profile img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+    }
+    .menu{
+        width: 300px;
+        height: 100vh;
+        position: absolute;
+        animation: slidemenu 0.5s linear;
+        background: rgb(5, 26, 54);
+    }
+    @keyframes slidemenu {
+        from{
+            left: -200px;
+        }
+        to{
+            left: 0;
+        }
+    }
+    .menu a{
+        text-decoration: none;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 30px;
+
+    }
+    .openMenu{
+        background: none;
+        border: none;
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        display: none;
+    }
+    @media(max-width: 450px){
+        .openMenu{
+            display: block;
+        }
+        .container .top-navbar .center-side .list-links ul li{
+        display: none;
+        }
+        .container .top-navbar .center-side .list-links ul:after{
+            display: none;
+        }
+    }
+    .list-menu ul li{
+        padding: 30px 50px;
+        font-size: 18px;
+    }
+    .list-menu ul li a{
+        font-size: 16px;
+    }
+    @media(max-width: 320px){
+        .menu{
+            width: 100%;
+        }
+    }
+    .header-sections{
+        width: 100%;
+        height: 60vh;
+        background: linear-gradient(360deg,rgb(0, 6, 14), rgb(23, 56, 165));
+    }
+    .header-sections .firstpart{
+        max-width: 2000px;
+        margin: 0 auto;
+    }
+    .header-sections .firstpart h1{
+        text-align: center;
+        font-family: Arial;
+        padding: 0 10px;
+        font-size: 50px;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-image: linear-gradient(360deg, pink, rgb(30, 159, 233));
+    }
+    .header-sections .firstpart p{
+        text-align: center;
+        font-family: Arial;
+        color: white;
+        margin-top: 10px;
+        padding: 0 10px;
+        font-size: 20px;
+    }
+    .header-sections .firstpart .btn-more{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 0 10px;
+    }
+    .header-sections .firstpart .btn-more .btn-more-1{
+        padding: 15px 20px;
+        border: none;
+        background: none;
+        color: black;
+        background: pink;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    .header-sections .firstpart .btn-more .btn-more-2{
+        padding: 15px 20px;
+        border: none;
+        color: white;
+        border: 2px solid white;
+        margin-left: 20px;
+        background: none;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    .header-sections .firstpart .users-number{
+        display: flex;
+        align-items: center;
+        margin-top: 50px;
+        justify-content: center;
+    }
+    .header-sections .firstpart .users-number button{
+        background: none;
+        border: none;
+        padding: 20px;
+        width: 300px;
+        background: none;
+        cursor: pointer;
+        color: white;
+    }
+    @media(max-width: 650px){
+        .header-sections .firstpart .users-number button{
+            width: 200px;
+        }
+    }
+    @media(max-width: 430px){
+        .header-sections .firstpart .users-number button{
+            width: 100px;
+        }
+    }
+    .header-sections .firstpart .users-number button span{
+        color: #c0baba;
+    }
+    .header-sections .secondpart{
+        max-width: 2000px;
+        margin: 0 auto;
+    }
+    .header-sections .secondpart .leftcolumn{
+        float: left;
+        width: 30%;
+        font-family: Arial;
+        padding: 0 20px;
+        margin-left: 4%;
+        color: white;
+        border-radius: 22px;
+        background: none;
+    }
+    .header-sections .secondpart .leftcolumn button{
+        background: none;
+        border: none;
+        font-size: 20px;
+        margin: 20px 0;
+        color: rgb(28, 100, 255);
+        font-weight: bold;
+    }
+    .header-sections .secondpart .centercolumn{
+        float: left;
+        width: 30%;
+        font-family: sans-serif;
+        padding: 0 20px;
+        color: white;
+        margin-left: 1%;
+        border-radius: 22px;
+        background: none;
+    }
+    .header-sections .secondpart .centercolumn button{
+        background: none;
+        border: none;
+        font-size: 20px;
+        margin: 20px 0;
+        color: rgb(28, 100, 255);
+        font-weight: bold;
+    }
+    .header-sections .secondpart .rightcolumn{
+        float: left;
+        width: 30%;
+        font-family: sans-serif;
+        padding: 0 20px;
+        margin-left: 1.5%;
+        color: white;
+        border-radius: 22px;
+        background: none;
+    }
+    .header-sections .secondpart .rightcolumn button{
+        background: none;
+        border: none;
+        font-size: 20px;
+        margin: 20px 0;
+        color: rgb(28, 100, 255);
+        font-weight: bold;
+    }
+    @media(max-width: 840px){
+        .header-sections .secondpart .leftcolumn{
+            width: 45%;
+        }
+        .header-sections .secondpart .centercolumn{
+            width: 45%;
+        }
+        .header-sections .secondpart .rightcolumn{
+            width: 90%;
+            margin-left: 5%;
+            margin-top: 30px;
+        }
+    }
+    @media(max-width: 480px){
+        .header-sections .secondpart .leftcolumn{
+            width: 90%;
+            margin-left: 5%;
+            margin-top: 30px;
+        }
+        .header-sections .secondpart .centercolumn{
+            width: 90%;
+            margin-left: 5%;
+            margin-top: 30px;
+        }
+        .header-sections .secondpart .rightcolumn{
+            width: 90%;
+            margin-left: 5%;
+            margin-top: 30px;
+        }
+    }
+    @media(max-width: 380px){
+        .header-sections .firstpart .users-number{
+            display: block;
+        }
+    }
+    .header-sections .thirdpart{
+        max-width: 2000px;
+        margin: 0 auto;
+    }
+    .header-sections .thirdpart .leftcolumn{
+        float: left;
+        width: 60%;
+        font-family: Arial;
+        padding: 0 20px;
+        margin-left: 20%;
+        margin-top: 80px;
+        margin-bottom: 70px;
+        color: white;
+        border-radius: 12px;
+        background: rgb(43, 43, 49);
+    }
+    .header-sections .thirdpart .leftcolumn .field1{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .header-sections .thirdpart .leftcolumn .field1 input{
+        width: 100%;
+        padding: 15px 20px;
+        border-radius: 12px;
+        border: none;
+        color: rgb(189, 186, 186);
+        outline: none;
+        background: none;
+        border: 1px solid rgb(78, 78, 90);
+    }
+    .header-sections .thirdpart .leftcolumn .field1 input::placeholder{
+        color: rgb(189, 186, 186);
+    }
+    .header-sections .thirdpart .leftcolumn .field1 #lastname{
+        margin-left: 20px;
+    }
+    .header-sections .thirdpart .leftcolumn #email{
+        width: 100%;
+        padding: 15px 20px;
+        border-radius: 12px;
+        border: none;
+        color: rgb(189, 186, 186);
+        background: none;
+        outline: none;
+        margin-bottom: 30px;
+        border: 1px solid rgb(78, 78, 90);
+    }
+    .header-sections .thirdpart .leftcolumn #email::placeholder{
+        color: rgb(189, 186, 186);
+    }
+    .header-sections .thirdpart .leftcolumn .field2{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .header-sections .thirdpart .leftcolumn .field2 input{
+        width: 100%;
+        padding: 15px 20px;
+        border-radius: 12px;
+        border: none;
+        color: rgb(189, 186, 186);
+        background: none;
+        outline: none;
+        margin-bottom: 30px;
+        border: 1px solid rgb(78, 78, 90);
+    }
+    .header-sections .thirdpart .leftcolumn .field2 input::placeholder{
+        color: rgb(189, 186, 186);
+    }
+    .header-sections .thirdpart .leftcolumn .field2 #position{
+        margin-left: 20px;
+    }
+    .header-sections .thirdpart .leftcolumn #eventspecifications{
+        width: 100%;
+        padding: 15px 20px;
+        border-radius: 12px;
+        border: none;
+        color: rgb(189, 186, 186);
+        background: none;
+        outline: none;
+        margin-bottom: 30px;
+        border: 1px solid rgb(78, 78, 90);
+    }
+    .header-sections .thirdpart .leftcolumn #eventspecifications::placeholder{
+        color: rgb(189, 186, 186);
+    }
+    .header-sections .thirdpart .leftcolumn #file{
+        width: 300px;
+        padding: 10px 20px;
+        background: none;
+        cursor: pointer;
+        border: 1px solid rgb(78, 78, 90);
+        border-radius: 12px;
+    }
+    .header-sections .thirdpart .leftcolumn #file span{
+        color: rgb(43, 43, 49);
+    }
+    .header-sections .thirdpart .leftcolumn #submit{
+        width: 100%;
+        padding: 15px 20px;
+        border-radius: 12px;
+        border: none;
+        color: white;
+        background: rgb(56, 104, 236);
+        outline: none;
+        font-weight: bold;
+        font-size: 18px;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
+    @media(max-width: 1150px){
+        .header-sections .thirdpart .leftcolumn{
+            width: 90%;
+            margin-left: 5%;
+        }
+    }
+    @media(max-width: 500px){
+        .header-sections .thirdpart .leftcolumn .field1{
+            display: block;
+        }
+        .header-sections .thirdpart .leftcolumn .field1 #lastname{
+            margin-left: 0;
+            margin-top: 30px;
+        }
+        .header-sections .thirdpart .leftcolumn .field2{
+            display: block;
+        }
+        .header-sections .thirdpart .leftcolumn .field2 #position{
+            margin-left: 0;
+        }
+    }
+    .header-sections .fivepart .box{
+        float: left;
+        width: 100%;
+        height: 350px;
+        font-family: Arial;
+        margin-top: 80px;
+        color: white;
+        background: linear-gradient(360deg,rgb(23, 56, 165),rgb(0, 6, 14));
+    }
+    .header-sections .fivepart .box .top-footer-bar{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .header-sections .fivepart .box .top-footer-bar h1{
+        cursor: pointer;
+        margin-right: 50px;
+    }
+    .header-sections .fivepart .box .top-footer-bar .list-menus ul{
+        list-style: none;
+    }
+    .header-sections .fivepart .box .top-footer-bar .list-menus ul li{
+        display: inline-block;
+        padding: 0 20px;
+        cursor: pointer;
+    }
+    .header-sections .fivepart .box .top-footer-bar .btn-links{
+        margin-left: 50px;
+    }
+    .header-sections .fivepart .box .top-footer-bar .btn-links img{
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+    @media(max-width: 1230px){
+        .header-sections .fivepart .box .top-footer-bar{
+            display: block;
+        }
+        .header-sections .fivepart .box .top-footer-bar .btn-links{
+            margin-bottom: 30px;
+        }
+        .header-sections .fivepart .box .top-footer-bar .list-menus{
+            margin-bottom: 30px;
+        }
+    }
+    .header-sections .fivepart .box .bottom-footer-bar{
+        margin-top: 30px;
+    }
+    .header-sections .fivepart .box .bottom-footer-bar p{
+        margin-top: 20px;
+    }
+    .header-sections .fivepart .box .bottom-footer-bar button{
+        padding: 15px 20px;
+        border: none;
+        margin-top: 30px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+    .header-sections .fivepart .box .bottom-footer-bar .viewdemo{
+        margin-right: 20px;
+        padding: 15px 20px;
+        border: none;
+        margin-top: 30px;
+        cursor: pointer;
+        color: white;
+        background: none;
+        border: 2px solid #c0baba;
+        border-radius: 12px;
+    }
+    .header-sections .fourthpart{
+        max-width: 2000px;
+        margin: 0 auto;
+    }
+    .header-sections .fourthpart .box{
+        float: left;
+        width: 90%;
+        font-family: Arial;
+        padding: 0 20px;
+        margin-left: 5%;
+        margin-top: 40px;
+        margin-bottom: 70px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        border-radius: 12px;
+        background: none;
+    }
+    .header-sections .fourthpart .box .card-price-free{
+        border: 2px solid #c0baba;
+        border-radius: 12px;
+        padding: 0 20px;
+        height: 380px;
+        margin-left: -25%;
+        width: 250px;
+    }
+    .header-sections .fourthpart .box .card-price-free strong{
+        font-weight: 10;
+        font-size: 14px;
+    }
+    .header-sections .fourthpart .box .card-price-free p{
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    .header-sections .fourthpart .box .card-price-free h1{
+        margin-top: 10px;
+    }
+    .header-sections .fourthpart .box .card-price-free h1 small{
+        font-size: 14px;
+        font-weight: 10;
+    }
+    .header-sections .fourthpart .box .card-price-free button{
+        padding: 10px 20px;
+        width: 100%;
+        border-radius: 8px;
+        background: none;
+        color: white;
+        margin: 20px 0;
+        border: 2px solid #c0baba;
+    }
+    .header-sections .fourthpart .box .card-price-free .more{
+        display: flex;
+        align-items: center;
+    }
+    .header-sections .fourthpart .box .card-price-free .more small{
+        margin-left: 20px;
+    }
+
+
+    .header-sections .fourthpart .box .card-price-basic{
+        border: 2px solid #c0baba;
+        border-radius: 12px;
+        padding: 0 20px;
+        width: 250px;
+        height: 460px;
+        margin-left: 0px;
+    }
+    .header-sections .fourthpart .box .card-price-basic strong{
+        font-weight: 10;
+        font-size: 14px;
+    }
+    .header-sections .fourthpart .box .card-price-basic p{
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    .header-sections .fourthpart .box .card-price-basic h1{
+        margin-top: 10px;
+    }
+    .header-sections .fourthpart .box .card-price-basic h1 small{
+        font-size: 14px;
+        font-weight: 10;
+    }
+    .header-sections .fourthpart .box .card-price-basic button{
+        padding: 10px 20px;
+        width: 100%;
+        border-radius: 8px;
+        background: none;
+        color: white;
+        background: rgb(7, 151, 207);
+        margin: 20px 0;
+        border: none;
+        font-weight: bold;
+    }
+    .header-sections .fourthpart .box .card-price-basic .more{
+        display: flex;
+        align-items: center;
+    }
+    .header-sections .fourthpart .box .card-price-basic .more small{
+        margin-left: 20px;
+    }
+
+
+
+
+    .header-sections .fourthpart .box .card-price-pro{
+        border: 2px solid #c0baba;
+        border-radius: 12px;
+        padding: 0 20px;
+        width: 250px;
+        height: 540px;
+        margin-left: 25%;
+    }
+    .header-sections .fourthpart .box .card-price-pro strong{
+        font-weight: 10;
+        font-size: 14px;
+    }
+    .header-sections .fourthpart .box .card-price-pro p{
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    .header-sections .fourthpart .box .card-price-pro h1{
+        margin-top: 10px;
+    }
+    .header-sections .fourthpart .box .card-price-pro h1 small{
+        font-size: 14px;
+        font-weight: 10;
+    }
+    .header-sections .fourthpart .box .card-price-pro button{
+        padding: 10px 20px;
+        width: 100%;
+        border-radius: 8px;
+        background: none;
+        color: white;
+        background: rgb(7, 151, 207);
+        margin: 20px 0;
+        border: none;
+        font-weight: bold;
+    }
+    .header-sections .fourthpart .box .card-price-pro .more{
+        display: flex;
+        align-items: center;
+    }
+    .header-sections .fourthpart .box .card-price-pro .more small{
+        margin-left: 20px;
+    }
+    .header-sections .fourthpart .box .basic-pro{
+        display: flex;
+    }
+
+
+    @media(max-width: 940px){
+    .header-sections .fourthpart .box{
+        display: block;
+    }
+    .header-sections .fourthpart .box .free{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .header-sections .fourthpart .box .basic-pro{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+    .header-sections .fourthpart .box .card-price-pro{
+        margin-left: 0;
+    }
+    .header-sections .fourthpart .box .card-price-free{
+        margin-left: 0;
+    }
+    }
+    @media(max-width: 610px){
+        .header-sections .fourthpart .box .basic-pro{
+            display: block;
+        }
+        .header-sections .fourthpart .box .basic-bas{
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        .header-sections .fourthpart .box .basic-pr{
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        .header-sections .fourthpart .box .card-price-pro{
+            margin-left: 0;
+        }
+        .header-sections .fourthpart .box .card-price-free{
+            margin-left: 0;
+        }
+    }
+    .header-sections .fourthpart h2{
+        color: #c0baba;
+        text-align: center;
+        padding: 0 10px;
+        font-family: Arial;
+    }
+    .header-sections .fourthpart p{
+        color: #c0baba;
+        text-align: center;
+        margin: 10px 0;
+        padding: 0 10px;
+        font-family: Arial;
+    }
+    .header-sections .fourthpart small{
+        color: #c0baba;
+        padding: 0 10px;
+        font-family: Arial;
+    }
+    @media(max-width: 300px){
+        .header-sections .fourthpart h1{
+            font-size: 18px;
+        }
+    }
+    .header-sections .fourthpart .pricing{
+        float: left;
+        width: 90%;
+        font-family: Arial;
+        padding: 0 20px;
+        margin-left: 5%;
+        margin-top: 40px;
+    }
+    .header-sections .secondpart .fivethpart{
+        float: left;
+        width: 90%;
+        font-family: Arial;
+        padding: 0 20px;
+        margin-left: 5%;
+        margin-top: 40px;
+        margin-bottom: 70px;
+        display: flex;
+        color: white;
+        background: none;
+        border-radius: 12px;
+    }
+    .header-sections .fivethpart .box{
+        float: left;
+        width: 20%;
+        font-family: Arial;
+        padding: 0 20px;
+        margin-left: 5%;
+        margin-top: 40px;
+        margin-bottom: 70px;
+        display: flex;
+        color: white;
+        background: none;
+        border-radius: 12px;
+    }
+    .header-sections .fivethpart .box1{
+        float: left;
+        width: 30%;
+        font-family: Arial;
+        padding: 0 20px;
+        margin-left: 5%;
+        margin-top: 40px;
+        margin-bottom: 70px;
+        color: white;
+        background: none;
+        border-radius: 12px;
+    }
+
+
+
+
+    .header-sections .secondpart .inspired{
+        float: left;
+        width: 50%;
+        height: 100px;
+        font-family: Arial;
+        padding: 0 20px;
+        margin-left: 25%;
+        margin-top: 60px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        border-radius: 12px;
+        background: linear-gradient(90deg, rgb(26, 37, 77),rgb(72, 72, 134));
+    }
+    .header-sections .secondpart .inspired p{
+        font-size: 14px;
+        color: #c0baba;
+    }
+    .inspired button{
+        padding: 10px 20px;
+        background: none;
+        border: 2px solid white;
+        color: white;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+    .header-sections .secondpart .excellent{
+        width: 50%;
+        font-family: Arial;
+        padding: 0 20px;
+        margin-left: 25%;
+        margin-top: 40px;
+        color: white;
+        border-radius: 12px;
+    }
+    .header-sections .secondpart .excellent span{
+        color: rgb(7, 151, 207);
+        font-weight: bold;
+    }
+    .rows{
+        max-width: 2000px;
+        margin: 0 auto;
+        width: 70%;
+        background: none;
+    }
+    .rows1{
+        display: flex;
+        justify-content: space-between;
+    }
+    .rows2{
+        display: flex;
+        justify-content: space-between;
+    }
+    .rows3{
+        display: flex;
+        justify-content: space-between;
+    }
+    .rows .leftcolumns{
+        width: 35%;
+        float: left;
+        font-family: sans-serif;
+        background: none;
+    }
+    .rows .leftcolumns p{
+        font-size: 18px;
+        color: white;
+        margin-bottom: 20px;
+    }
+    .rows .leftcolumns small{
+        color: #c0baba;
+        font-family: sans-serif;
+    }
+    .rows .rightcolumns{
+        width: 35%;
+        float: left;
+        background: none;
+    }
+    .rows .rightcolumns p{
+        font-size: 18px;
+        color: white;
+        font-family: sans-serif;
+        margin-bottom: 20px;
+    }
+    .rows .rightcolumns small{
+        color: #c0baba;
+        font-family: sans-serif;
+    }
+    @media(max-width: 880px){
+        .rows1{
+            display: block;
+        }
+        .rows2{
+            display: block;
+        }
+        .rows3{
+            display: block;
+        }
+        .rows .leftcolumns{
+            width: 100%;
+        }
+        .rows .rightcolumns{
+            width: 100%;
+        }
+        .header-sections .secondpart .inspired{
+            height: auto;
+            display: block;
+        }
+        .header-sections .secondpart .inspired h3{
+            padding: 10px 0;
+        }
+        .inspired button{
+           margin: 13px 0;
+        }
+    }
+</style>
+<body>
+    <div class="menu" style="display: none;" id="myname"><br><br>
+        <center>
+            <a href="javascript:void()" onclick="closeMenu()">&times;</a>
+        </center>
+        <div class="list-menu">
+            <ul>
+                <li><a href="index.html">Features</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="" onclick="closeMenu()" id="myweb"></div>
+    <div class="container">
+        <div class="top-navbar">
+            <div class="left-side">
+                <h1>CTicket</h1>
+            </div>
+            <div class="center-side">
+                <div class="list-links">
+                    <ul>
+                        <li><a href="index.html">Features</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="user-profile">
+                    <a href="profile.html"><img src="profile/profile.avif" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sections">
+        <div class="header-sections">
+            <div class="firstpart"><br><br><br><br><br><br><br><br><br>
+                <h1>The Fastest <br> Ways to streaming a multiple event </h1>
+                <p>Buy ticket to discovering the live show  <br> without any higher or additional tools.</p>
+               <center>
+                <div class="btn-more">
+                    <button class="btn-more-1">Learn More</button>
+                    <button class="btn-more-2">Try it Now</button>
+                </div>
+               </center>
+               <center>
+                <div class="users-number">
+                    <div class="flex1">
+                        <button><p>183.8K</p><span>Clients</span></button>
+                        <button class="flex3"><p>183.8K</p><center><span>Projects</span></center></button>
+                    </div>
+                    <div class="flex2">
+                        <button><p>183.8K</p><span>Complited</span></button>
+                        <button class="flex4"><p>183.8K</p><span>Failed</span></button>
+                    </div>
+                </div>
+               </center>
+            </div><br><br><br><br><br><br><br><br><br>
+            <div class="secondpart">
+                <div class="leftcolumn">
+                    <button>STEP 1</button>
+                    <p>generate your website with AI</p>
+                    <small>Get the Ultimate headstart by having chatGPT generate your homepage for you.</small><br><br>
+                    <div class="">
+                        <p style="font-size: 20px; font-weight: bold;">Clean Design</p>
+                        <small>We let chatGPT generate your content and pick design assets for you, but we do the design for you, to guarantee pretty result every time.</small>
+                    </div><br><br>
+                    <div class="">
+                        <p style="font-size: 20px; font-weight: bold;">High Quality Content</p>
+                        <small>You'll be surprised how good the AI results are. Form FAQs to feature sections, you'll get a solid starting point for your project</small>
+                    </div><br><br>
+                    <div class="">
+                        <p style="font-size: 20px; font-weight: bold;">Fully Responsive</p>
+                        <small>All your content will look great on any screen size without any extra effort. we've already solved responsive design for you.</small>
+                    </div><br>
+                </div>
+                <div class="centercolumn">
+                    <button>STEP 2</button>
+                    <p>Edit with EaseI</p>
+                    <small>Get the Ultimate headstart by having chatGPT generate your homepage for you.</small><br><br>
+                    <div class="">
+                        <p style="font-size: 20px; font-weight: bold;">Clean Design</p>
+                        <small>We let chatGPT generate your content and pick design assets for you, but we do the design for you, to guarantee pretty result every time.</small>
+                    </div><br><br>
+                    <div class="">
+                        <p style="font-size: 20px; font-weight: bold;">High Quality Content</p>
+                        <small>You'll be surprised how good the AI results are. Form FAQs to feature sections, you'll get a solid starting point for your project</small>
+                    </div><br><br>
+                    <div class="">
+                        <p style="font-size: 20px; font-weight: bold;">Fully Responsive</p>
+                        <small>All your content will look great on any screen size without any extra effort. we've already solved responsive design for you.</small>
+                    </div><br>
+                </div>
+                <div class="rightcolumn">
+                    <button>STEP 3</button>
+                    <p>Publish like a Pro</p>
+                    <small>Get the Ultimate headstart by having chatGPT generate your homepage for you.</small><br><br>
+                    <div class="">
+                        <p style="font-size: 20px; font-weight: bold;">Clean Design</p>
+                        <small>We let chatGPT generate your content and pick design assets for you, but we do the design for you, to guarantee pretty result every time.</small>
+                    </div><br><br>
+                    <div class="">
+                        <p style="font-size: 20px; font-weight: bold;">High Quality Content</p>
+                        <small>You'll be surprised how good the AI results are. Form FAQs to feature sections, you'll get a solid starting point for your project</small>
+                    </div><br><br>
+                    <div class="">
+                        <p style="font-size: 20px; font-weight: bold;">Fully Responsive</p>
+                        <small>All your content will look great on any screen size without any extra effort. we've already solved responsive design for you.</small>
+                    </div><br>
+                </div>
+            </div>
+            <div class="thirdpart">
+                <div class="leftcolumn">
+                    <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+                        <div class="field1">
+                            <input type="text" name="firstname" placeholder="First Name" id="firstname"><br>
+                            <input type="text" name="lastname" placeholder="Last Name" id="lastname"><br>
+                        </div>
+                        <input type="email" name="email" placeholder="Email" id="email">
+                        <div class="field2">
+                            <input type="text" name="mtnpayment" placeholder="*182*8*1*483924*5000#" id="mtnpayment"><br>
+                            <input type="text" name="position" placeholder="Regular, VIP, VIIP" id="position"><br>
+                        </div>
+                        <label for="text">Would you accpet our terms and policy</label><br><br>
+                        <input type="radio" name="no" value="yes"> Yes <br><br>
+                        <input type="radio" name="no" value="no"> No <br><br>
+                        <input type="text" name="eventspecifications" placeholder="Iwacu Muzika Festival 2024, U Speak Live Thursday, Stand Up Comedy en Français" id="eventspecifications"><br>
+                        <label for="uploadpayimentresult">Upload payment result Ex: screenshot</label><br><br>
+                        <input type="file" id="file" name="image[]" style="display: none;"><label for="file" id="file">Choose File</label><br><br><br>
+                        <button type="submit" name="submit" id="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="fourthpart">
+                <div class="pricing">
+                    <h2>Pricing</h2>
+                    <p>Simple, Affordable, Per-site pricing, Unlimited users.</p>
+                    <center>
+                        <small>Bill Monthly or Bill Yearly</small>
+                    </center>
+                </div>
+                <div class="box">
+                   <div class="free">
+                    <div class="card-price-free">
+                        <p>Free</p><br>
+                        <strong>Get started with no cost</strong>
+                        <h1>$0 <small>/ Site / Month</small></h1>
+                        <button>Get Satrted</button>
+                        <div class="more">
+                            <span><img src="assets/checkmark.png" alt=""></span>
+                            <small>Unlimited Users</small>
+                        </div>
+                        <div class="more">
+                            <span><img src="assets/checkmark.png" alt=""></span>
+                            <small>Homepage</small>
+                        </div>
+                        <div class="more">
+                            <span><img src="assets/checkmark.png" alt=""></span>
+                            <small>Umso Branding</small>
+                        </div>
+                        <div class="more">
+                            <span><img src="assets/checkmark.png" alt=""></span>
+                            <small>Umso Subdomain</small>
+                        </div>
+                        <div class="more">
+                            <span><img src="assets/checkmark.png" alt=""></span>
+                            <small>Blog</small>
+                        </div>
+                    </div>
+                   </div>
+                    <div class="basic-pro">
+                        <div class="basic-bas">
+                            <div class="card-price-basic">
+                                <p>Basic</p><br>
+                                <strong>Perfect for landing pages</strong>
+                                <h1>$7 <small>/ Site / Month</small></h1>
+                                <button>Get Satrted</button>
+                                <div class="more">
+                                    <span><img src="assets/ok.png" alt=""></span>
+                                    <small>Unlimited Users</small>
+                                </div>
+                                <div class="more">
+                                    <span><img src="assets/ok.png" alt=""></span>
+                                    <small>Homepage</small>
+                                </div>
+                                <div class="more">
+                                    <span><img src="assets/ok.png" alt=""></span>
+                                    <small>No Branding</small>
+                                </div>
+                                <div class="more">
+                                    <span><img src="assets/ok.png" alt=""></span>
+                                    <small>Custom Domain</small>
+                                </div>
+                                <div class="more">
+                                    <span><img src="assets/ok.png" alt=""></span>
+                                    <small>Blog</small>
+                                </div>
+                                <div class="more">
+                                    <span><img src="assets/ok.png" alt=""></span>
+                                    <small>Cookies Banner</small>
+                                </div>
+                                <div class="more">
+                                    <span><img src="assets/ok.png" alt=""></span>
+                                    <small>Basic Forms</small>
+                                </div>
+                                <div class="more">
+                                    <span><img src="assets/ok.png" alt=""></span>
+                                    <small>Basic Analytics</small>
+                                </div>
+                            </div>
+                        </div>
+                       <div class="basic-pr">
+                        <div class="card-price-pro">
+                            <p>Pro</p><br>
+                            <strong>All features, unlimited pages.</strong>
+                            <h1>$20 <small>/ Site / Month</small></h1>
+                            <button>Get Satrted</button>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>Unlimited Users</small>
+                            </div>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>Unlimited Pages</small>
+                            </div>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>No Branding</small>
+                            </div>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>Custom Domain</small>
+                            </div>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>Blog</small>
+                            </div>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>Cookies Banner</small>
+                            </div>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>Custom Forms</small>
+                            </div>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>Advanced Analytics</small>
+                            </div>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>Passwords</small>
+                            </div>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>Multiple Content</small>
+                            </div>
+                            <div class="more">
+                                <span><img src="assets/ok.png" alt=""></span>
+                                <small>Site Export</small>
+                            </div>
+                        </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="secondpart">
+                <div class="inspired">
+                    <div class="">
+                        <h3>Inspired to build your ownn?</h3>
+                        <p>Cancel anytime, No credit card require.</p>
+                    </div>
+                    <div class="">
+                        <button>Get Started</button>
+                    </div>
+                </div>
+                <div class="excellent">
+                    <center><small>Excellent <span>&starf;&starf;&starf;&starf;&starf;</span> 4.9 out of 5 based on 95 review</small></center>
+                </div>
+            </div><br><br><br><br><br><br>
+            <div class="rows">
+                <div class="rows1">
+                    <div class="leftcolumns">
+                        <p>Do I have to pay extra for more users?</p>
+                        <small>No, we don't do seat-based pricing, Invite your entire team to collaborate on your site!</small><br><br>
+                    </div>
+                    <div class="rightcolumns">
+                        <p>When and how can i cancel?</p>
+                        <small>You can cancel at any time in your account settings, There are no long-term contacts and you do not have to call us to cancel.</small><br><br>
+                    </div>
+                </div>
+            </div>
+            <div class="rows">
+               <div class="rows2">
+                <div class="leftcolumns">
+                    <p>How can I pay?</p>
+                    <small>We accept major credit cards, European customers can pay in Euro and through additional providers including Bancontact, EPS, giropay, IDEAL, Sofort, SEPA.</small><br><br>
+                </div>
+                <div class="rightcolumns">
+                    <p>Are there any visitor or pageview limits?</p>
+                    <small>No, we don't want you to worry about getting too popular. that means you can have as many site visitors and views as you like.</small><br><br>
+                </div>
+               </div>
+            </div>
+            <div class="rows">
+                <div class="rows3">
+                    <div class="leftcolumns">
+                        <p>Do I need a credit card for free sites?</p>
+                        <small>You only need to add a credit card to pay for pro sites, free sites just required a free account.</small><br><br>
+                    </div>
+                    <div class="rightcolumns">
+                        <p>Is there a free trial?</p>
+                        <small>We don't have trails, you can simply create a free site, which has all features except for custom domains and site export.</small><br><br>
+                    </div>
+                </div>
+            </div>
+            <div class="fivepart">
+               <center>
+                <div class="box">
+                    <div class="top-footer-bar">
+                      <div class="btn-links">
+                          <img src="assets/pinterest1.png" alt="">
+                          <img src="assets/instagram1.png" alt="">
+                          <img src="assets/twitter1.png" alt="">
+                          <img src="assets/facebook1.png" alt="">
+                      </div>
+                          <div class="list-menus">
+                              <ul>
+                                  <li>My profile</li>
+                                  <li>Security</li>
+                                  <li>Terms of use</li>
+                                  <li>Adding account</li>
+                                  <li>Cookies policy</li>
+                                  <li>Staying safe</li>
+                                  <li>Reporting</li>
+                              </ul>
+                          </div>
+                      <h1>CTicket</h1>
+                    </div>
+                    <div class="bottom-footer-bar">
+                        <h3>Let's get started on something great</h3>
+                        <p>Join over 4,000+ got ideas? We've got skills, save thousands of hours</p>
+                        <!-- <button class="viewdemo">View demo</button>
+                        <button>Get started</button> -->
+                    </div>
+                  </div>
+                  <div class="bottom-footer"></div>
+               </center>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        function openMenu(){
+            document.getElementById("myname").style.display = "block";
+            document.getElementById("myweb").style.display = "block";
+        }
+        function closeMenu(){
+            document.getElementById("myname").style.display = "none";
+            document.getElementById("myweb").style.display = "none";
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        height: 100vh;
+        background: rgb(0, 6, 14);
+    }
+    .container .top-navbar{
+        width: 100%;
+        height: 70px;
+        display: flex;
+        position: fixed;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        background: rgb(19, 48, 145);
+    }
+    .container .top-navbar .left-side h1{
+        color: white;
+        font-family: Arial;
+    }
+    .container .top-navbar .center-side .list-links ul{
+        list-style: none;
+    }
+    .container .top-navbar .center-side .list-links ul:after{
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        top: 50px;
+        cursor: pointer;
+        right: 50%;
+        background: white;
+    }
+    .container .top-navbar .center-side .list-links ul li{
+        display: inline-block;
+        padding: 0 20px;
+        margin-left: -70px;
+    }
+    .container .top-navbar .center-side .list-links ul li a{
+        text-decoration: none;
+        color: white;
+        font-family: Arial;
+    }
+    .container .top-navbar .right-side .user-profile img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+    }
+    .menu{
+        width: 300px;
+        height: 100vh;
+        z-index: 9999;
+        position: absolute;
+        animation: slidemenu 0.5s linear;
+        background: rgb(5, 26, 54);
+    }
+    @keyframes slidemenu {
+        from{
+            left: -200px;
+        }
+        to{
+            left: 0;
+        }
+    }
+    .menu a{
+        text-decoration: none;
+        color: white;
+        font-family: Arial;
+        font-weight: bold;
+        font-size: 30px;
+
+    }
+    .openMenu{
+        background: none;
+        border: none;
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        display: none;
+    }
+    @media(max-width: 660px){
+        .openMenu{
+            display: block;
+        }
+        .container .top-navbar .center-side .list-links ul li{
+        display: none;
+        }
+    }
+    .list-menu ul li{
+        padding: 30px 50px;
+        font-size: 18px;
+    }
+    .list-menu ul li a{
+        font-size: 16px;
+    }
+    @media(max-width: 320px){
+        .menu{
+            width: 100%;
+        }
+    }
+    
+
+    section{
+        width: 1000px;
+        height: 600px;
+        background: none;
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .leftcolumn{
+        width: 80%;
+        height: 600px;
+        overflow-y: auto;
+        border-top-right-radius: 22px;
+        border-bottom-right-radius: 22px;
+        background: white;
+    }
+    .leftcolumn::-webkit-scrollbar{
+        width: 10px;
+    }
+    .leftcolumn::-webkit-scrollbar-track{
+        background: transparent;
+    }
+    .leftcolumn::-webkit-scrollbar-thumb{
+        background: rgb(49, 82, 126);
+        border-top-right-radius: 22px;
+        border-bottom-right-radius: 22px;
+    }
+    .rightcolumn{
+        width: 20%;
+        height: 600px;
+        border-top-left-radius: 22px;
+        border-bottom-left-radius: 22px;
+        border-right: 1px solid #6471839f;
+        background: white;
+    }
+    .rightcolumn button{
+        background: none;
+        border: none;
+        font-size: 14px;
+        cursor: pointer;
+        margin: 20px 30px;
+    }
+    .top-user-profile{
+        width: 96%;
+        height: 100px;
+        padding: 12px;
+        border-radius: 22px;
+        border: 1px solid #6471839f;
+        margin-left: 2%;
+        margin-top: 10px;
+    }
+    .top-user-profile .images{
+        display: flex;
+        align-items: center;
+    }
+    .top-user-profile .images img{
+        width: 70px;
+        height: 70px;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+    .top-user-profile .images .text{
+        margin-left: 20px;
+    }
+    .top-user-profile .images .text p{
+        font-size: 18px;
+        font-family: sans-serif;
+    }
+    .top-user-profile .images .text small{
+        color: rgb(49, 82, 126);
+        font-family: sans-serif;
+    }
+    .middle-user-profile{
+        width: 96%;
+        height: 270px;
+        padding: 12px;
+        border-radius: 22px;
+        border: 1px solid #6471839f;
+        margin-left: 2%;
+        margin-top: 10px;
+    }
+    .middle-user-profile button{
+        background: none;
+        border: none;
+        font-size: 20px;
+    }
+    .middle-user-profile .label small{
+        color: rgb(49, 82, 126);
+        font-family: sans-serif;
+    }
+    .middle-user-profile .label p{
+        font-size: 16px;
+        font-family: sans-serif;
+    }
+    .bottom-user-profile{
+        width: 96%;
+        height: 160px;
+        padding: 12px;
+        border-radius: 22px;
+        border: 1px solid #6471839f;
+        margin-left: 2%;
+        margin-top: 10px;
+    }
+    .bottom-user-profile button{
+        background: none;
+        border: none;
+        font-size: 20px;
+    }
+    .bottom-user-profile .label small{
+        color: rgb(49, 82, 126);
+        font-family: sans-serif;
+    }
+    .bottom-user-profile .label p{
+        font-size: 16px;
+        font-family: sans-serif;
+    }
+    @media(max-width: 1020px){
+    section{
+        width: 800px;
+    }
+    }
+    @media(max-width: 820px){
+    section{
+        width: 650px;
+    }
+    .rightcolumn{
+        width: 30%;
+    }
+    .leftcolumn{
+        width: 70%;
+    }
+    }
+    @media(max-width: 670px){
+    section{
+        width: 550px;
+    }
+    .rightcolumn{
+        width: 30%;
+    }
+    .leftcolumn{
+        width: 70%;
+    }
+    }
+    @media(max-width: 570px){
+    section{
+        width: 450px;
+    }
+    .rightcolumn{
+        display: none;
+    }
+    .leftcolumn{
+        width: 100%;
+        border-top-left-radius: 22px;
+        border-bottom-left-radius: 22px;
+    }
+    #settings{
+        display: block;
+    }
+    }
+    @media(max-width: 470px){
+    section{
+        width: 350px;
+    }
+    }
+    @media(max-width: 370px){
+    section{
+        width: 265px;
+    }
+    }
+    .samuel2{
+        padding: 0 20px;
+    }
+    .samuel2 small{
+        font-family: sans-serif;
+        font-size: 16px;
+        color: rgb(49, 82, 126);
+    }
+    .samuel2 button{
+        background: none;
+        border: none;
+        font-size: 20px;
+    }
+    .samuel3{
+        padding: 0 20px;
+    }
+    .samuel3 small{
+        font-family: sans-serif;
+        font-size: 16px;
+        color: rgb(49, 82, 126);
+    }
+    .samuel3 button{
+        background: none;
+        border: none;
+        font-size: 20px;
+    }
+    .samuel4{
+        padding: 0 20px;
+    }
+    .samuel4 small{
+        font-family: sans-serif;
+        font-size: 16px;
+        color: rgb(49, 82, 126);
+    }
+    .samuel4 button{
+        background: none;
+        border: none;
+        font-size: 20px;
+    }
+    .samuel5{
+        padding: 0 20px;
+    }
+    .samuel5 small{
+        font-family: sans-serif;
+        font-size: 16px;
+        color: rgb(49, 82, 126);
+    }
+    .samuel5 button{
+        background: none;
+        border: none;
+        font-size: 20px;
+    }
+    .samuel6{
+        padding: 0 20px;
+    }
+    .samuel6 small{
+        font-family: sans-serif;
+        font-size: 16px;
+        color: rgb(49, 82, 126);
+    }
+    .samuel6 button{
+        background: none;
+        border: none;
+        font-size: 20px;
+    }
+    .samuel7{
+        padding: 0 20px;
+    }
+    .samuel7 small{
+        font-family: sans-serif;
+        font-size: 16px;
+        color: rgb(49, 82, 126);
+    }
+    .samuel7 button{
+        background: none;
+        border: none;
+        font-size: 20px;
+    }
+    .settings{
+        display: none;
+        margin-right: 10px;
+    }
+    @media(max-width: 570px){
+        .settings{
+            display: block;
+        }
+    }
+    .samuel8{
+        margin-left: 30px;
+    }
+    .samuel8 button{
+        background: none;
+        border: none;
+        font-family: sans-serif;
+        color: rgb(49, 82, 126);
+        padding: 30px 0;
+    }
+    .close{
+        font-size: 30px;
+        font-weight: bold;
+        font-family: sans-serif;
+        color: rgb(49, 82, 126);
+        text-decoration: none;
+    }
+    .box-card{
+        width: 100%;
+        height: 30vh;
+        background: linear-gradient(360deg,rgb(0, 6, 14), rgb(23, 56, 165));
+    }
+    
+</style>
+<body>
+    <div class="menu" style="display: none;" id="myname"><br><br>
+        <center>
+            <a href="javascript:void()" onclick="closeMenu()">&times;</a>
+        </center>
+        <div class="list-links">
+            <ul>
+                <li><a href="index.html">Features</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="" onclick="closeMenu()" id="myweb"></div>
+    <div class="container">
+        <div class="top-navbar">
+            <div class="left-side">
+                <h1>CTicket</h1>
+            </div>
+            <div class="center-side">
+                <div class="list-links">
+                    <ul>
+                        <li><a href="index.html">Features</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="user-profile">
+                    <img src="profile/profile.avif" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="box-card"></div>
+    </div><br><br><br><br>
+
+    <section>
+        <div class="leftcolumn" style="float: right;">
+            <div class="samuel1" id="mynames1">
+                <div class="top-user-profile">
+                    <div class="images">
+                        <img src="profile/profile.avif" alt="">
+                        <div class="text">
+                            <p>samuelumutiti</p>
+                            <small>ID: 37857513723</small><br>
+                            <small>Kigali city / Gasogi</small>
+                        </div>
+                    </div>
+                </div><br>
+                <div class="middle-user-profile">
+                    <div class="label">
+                        <button>Personal Informations</button><br><br>
+                        <small>Name</small><br>
+                        <p>Umutiti</p><br>
+                        <small>Username</small><br>
+                        <p>samuelumutiti</p><br>
+                        <small>Email</small>
+                        <p>softdevsamuel@gmail.com</p><br>
+                        <small>Bio</small>
+                        <p>Digital Creator</p>
+                    </div>
+                </div>
+                <div class="bottom-user-profile">
+                    <div class="label">
+                        <div class="" style="display: flex; align-items: center; justify-content: space-between;">
+                            <button>Address</button>
+                            <div class="" style="display: flex; align-items: center;">
+                                <img src="assets/settings.png" alt="" class="settings" onclick="samu_open8()" id="myname8">
+                                <img src="assets/edit.png" alt="" style="cursor: pointer;">
+                            </div>
+                        </div><br>
+                        <small>Country</small>
+                        <p>Rwanda</p><br>
+                        <small>City / State</small>
+                        <p>Kigali city / Gasogi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="" onclick="samu_close1()" id="myweb1"></div>
+
+
+            <div class="samuel2" style="display: none;" id="mynames2"><br>
+                <center>
+                    <a href="javascript:void()" class="close" onclick="samu_close2()">&times;</a><br><br>
+                </center>
+                <button>Third Party Apps</button><br><br>
+                <small>The Instagram Basic Display API will be discontinued on December 4th, 2024. After that date, access to the Instagram Basic Display API and your historical usage of it will no longer be available. Download your information now if you’d like to keep it. Be careful before giving third party apps or websites access to your Instagram account. Never share your login information with any person or app you don’t trust.</small><br><br>
+                <button>Account Security</button><br><br>
+                <small>If you think your account has been hacked or taken over, there are several actions you may be able to take via the website or the app to secure your account. If someone gains access to your account or you're unable to log in, visit this page on your desktop or mobile browser to secure your account.You can also try the recovery steps below. Some of these recovery steps may not be available to you depending on the type of account you're trying to recover, but we recommend trying them all.</small><br><br>
+                <button>Blocking People</button><br><br>
+                <small>Please update your Instagram app to the latest version to have the most up-to-date experience for blocking. When you block someone from the Instagram app, you’ll have the option to block their account, or to block their account and other existing accounts they may have or accounts they may create. Note: If you’re following multiple accounts owned by the same person, you’ll need to block each account individually. People aren't notified when you block them.</small><br><br>
+                <button>Controlling Your Visibility</button><br><br>
+                <small>Note: If you are under 16 when you sign up for an Instagram account, you’ll have the option to choose between a public or private account, but Private is selected by default. If you’re over 16, your Instagram account is public by default and you can choose to make your account private at any time. Learn more about how to make your account private below.</small>
+            </div>
+            <div class="" onclick="samu_close2()" id="myweb2"></div>
+        
+        
+            <div class="samuel3" style="display: none;" id="mynames3"><br>
+               <center>
+                    <a href="javascript:void()" class="close" onclick="samu_close3()">&times;</a><br><br>
+               </center>
+                <button>Terms of Use</button><br><br>
+                    <small>Welcome to Instagram! These Terms of Use (or “Terms”) govern your use of Instagram, except where we expressly state that separate terms (and not these) apply, and provide information about the Instagram Service (the “Service”), outlined below. When you create an Instagram account or use Instagram, you agree to these terms. The Meta Terms of Service do not apply to this Service. The Instagram Service is one of the Meta Products, provided to you by Meta Platforms, Inc. These Terms of Use therefore constitute an agreement between you and Meta Platforms, Inc.</small><br><br>
+                    <button>The Instagram Service</button><br><br>
+                    <small>Offering personalized opportunities to create, connect, communicate, discover and share.  features, offers and accounts that you might be interested in, and offering ways for you to experience Instagram, based on things that you and others do on and off Instagram.</small><br><br>
+                    <button>Our Agreement.</button><br><br>
+                    <small>Your use of music on the Service is also subject to our Music Guidelines, and your use of our API is subject to our Meta Platform Terms and Developer Policies. For example, if you use payment features, you will be asked to agree to the Community Payment Terms. If any of those terms conflict with this agreement, those other terms will govern.</small><br><br>
+                    <button>Updating These Terms</button><br><br>
+                    <small>We may change our Service and policies, and we may need to make changes to these Terms so that they accurately reflect our Service and policies. Unless otherwise required by law, we will notify you (for example, through our Service) before we make changes to these Terms and give you an opportunity to review them before they go into effect. Then, if you continue to use the Service, you will be bound by the updated Terms. If you do not want to agree to these or any updated Terms, you can delete your account, here.</small>
+            </div>
+            <div class="" onclick="samu_close3()" id="myweb3"></div>
+        
+        
+            <div class="samuel4" style="display: none;" id="mynames4"><br>
+                <center>
+                    <a href="javascript:void()" class="close" onclick="samu_close4()">&times;</a><br><br>
+                </center>
+                <button>Adding Accounts</button><br><br>
+                <small>Not everyone will be able to remove an account from the login screen at this time You can only be logged into a single Instagram account at a time, but your device can store login information for multiple Instagram accounts. You can add or remove login information from your Instagram app settings.</small><br><br>
+                <button>What happens if i share my instagram photo or video to another social network?</button><br><br>
+                <small>If someone with a private profile shares a photo or video to a social network (like Twitter, Facebook and so on) using Instagram, the image will be visible on that network and the permalink will be active. In other words, the photo will be publicly accessible by anyone who has access to its direct link/URL. Keep in mind that sharing a photo or video to a social network doesn't mean that the image will be visible in Instagram. Your account will still appear private to those who aren't approved followers.</small><br><br>
+                <button>Add or change the facebook page connected to your instagram professional account</button><br><br>
+                <small>Classic Pages on Facebook are updating to the new Pages experience. You’ll still have access to many of the same features to manage your professional presence, build your brand or business, grow your audience and connect with followers. Your content, insights, ads, Likes and followers will automatically transfer when your Page updates.</small><br><br>
+                <button>Add your instagram and facebook account to the same accounts center</button><br><br>
+                <small>When you add your Instagram account to the same Accounts Center as your Facebook account, you can share content like stories and posts directly from Instagram to Facebook. You can link multiple accounts to one Facebook profile.</small>
+            </div>
+            <div class="" onclick="samu_close4()" id="myweb4"></div>
+        
+        
+            <div class="samuel5" style="display: none;" id="mynames5"><br>
+                <center>
+                    <a href="javascript:void()" class="close" onclick="samu_close5()">&times;</a><br><br>
+                </center>
+                <button>Cookies Policy What are cookies, and what does this policy cover?</button><br><br>
+                <small>Cookies are small pieces of text used to store information on web browsers. Cookies are used to store and receive identifiers and other information on computers, phones and other devices. Other technologies, including data that we store on your web browser or device, identifiers associated with your device and other software, are used for similar purposes. In this policy, we refer to all of these technologies as “cookies”. We use cookies if you have a Facebook or Instagram account, use the , including our website and apps, or visit other websites and apps that use the Meta Products (including the Like button). Cookies enable Meta to offer the Meta Products to you and to understand the information that we receive about you, including information about your use of other websites and apps, whether or not you are registered or logged in. This policy explains how we use cookies and the choices you have. Except as otherwise stated in this policy, the  will apply to our processing of the data that we collect via cookies.</small><br><br>
+                <button>Why do we use cookies?</button><br><br>
+                <small>Cookies help us provide, protect and improve the Meta Products, such as by personalising content, tailoring and measuring ads, and providing a safer experience. The cookies that we use include session cookies, which are deleted when you close your browser, and persistent cookies, which stay in your browser until they expire or you delete them. The cookies we  may change over time as we improve and update Meta Products, we typically use them for the following purposes:</small><br><br>
+                <button>Do other Companies use cookies in connection with the Meta Products?</button><br><br>
+                <small>Yes, other companies use cookies on the Meta Products to provide advertising, measurement, marketing and analytics services to us, and to provide certain features and improve our services for you. For example, other companies’ cookies help tailor ads off of Meta Products, measure their performance and effectiveness and support marketing and analytics. Certain features on</small><br><br>
+            </div>
+            <div class="" onclick="samu_close5()" id="myweb5"></div>
+        
+        
+            <div class="samuel6" style="display: none;" id="mynames6"><br>
+               <center>
+                    <a href="javascript:void()" class="close" onclick="samu_close6()">&times;</a><br><br>
+               </center>
+                <button>Self-Injury</button><br><br>
+                <small>If your friend is in immediate danger, call local emergency services immediately. Don't wait. It can be very hard to know what to say to someone who's told you that they're considering suicide, or who seems to be thinking about it but may not have told you directly. Encouraging your friend to talk about what they're going through can be one of the most helpful things you can do for them. Being a good listener, and giving them the space they need to talk is important, as is following up with them regularly. You also can help by getting them to someone else they can trust, like a health care professional or another friend. We've worked with suicide prevention experts to understand the best ways to support a person who's having suicidal thoughts. This list is informed by the work that Forefront: Innovations in Suicide Prevention has done on suicide prevention.</small><br><br>
+                <button>About Eating Disorders</button><br><br>
+                <small>If a friend posted something that suggests they may have an eating disorder and need help, we ask that you report the post to us so we can reach out to them and offer support. Please note that we'll remove content that promotes or encourages eating disorders, but we do allow people to share their own experiences and journeys around self-image and body acceptance. You can visit Instagram's Community Guidelines to learn more. You can also offer support. We worked with the National Eating Disorders Association to come up with the following tips about what you should and shouldn’t do if you think your friend may be struggling with an eating disorder.</small><br><br>
+                <button>Ways to deal with conflict or abuse on Instagram</button><br><br>
+                <small>If you've navigated to this page, it's likely that you've had a negative experience on Instagram. We understand that it can be frustrating when online interactions become difficult. You may have had an argument with someone else on Instagram or come across posts that you find offensive. The resources on this page can help you successfully approach the conflicts you may experience on Instagram. We hope they'll provide helpful solutions. If you or someone you know is in immediate danger, please contact your local authorities right away.</small>
+            </div>
+            <div class="" onclick="samu_close6()" id="myweb6"></div>
+        
+        
+            <div class="samuel7" style="display: none;" id="mynames7"><br>
+                <center>
+                    <a href="javascript:void()" class="close" onclick="samu_close7()">&times;</a><br><br>
+                </center>
+               <button>How to Report Things</button><br><br>
+               <small>The best way to report abusive content or spam on Instagram is by using the Report link near the content itself. You can also report a post or profile on Instagram. Below are examples of how you can report content to us. If you're experiencing a technical problem on Instagram, you can report it here. Keep in mind that your report is anonymous, except if you’re reporting an intellectual property infringement. The account you reported won’t see who reported them.</small><br><br>
+               <button>Report Content</button><br><br>
+               <small>This feature isn't available on Computer Help, but it is available on these devices. Select a device to learn more about this feature.You can report abusive photos, videos and messages that are sent to you on Instagram if you think they go against our Community Guidelines.</small><br><br>
+               <button>Report Intellectual Property Infringement</button><br><br>
+               <small>we provide the report number and a description of the removed content. Instagram may provide additional information if it’s requested by the person who posted the reported content.For any content that was removed based on U.S. trademark rights, we will include instructions for how to appeal if the affected user believes the content should not have been removed. We may provide additional information if it’s requested by the person who posted the reported content.</small><br><br>
+               <button>Special Types of Reports</button><br><br>
+               <small>We only respond to reports sent to us from the person who's being impersonated or a representative of the person who's being impersonated (example: a parent). If someone you know is being impersonated, please encourage that person to report it. Keep in mind that your report is anonymous, except if you’re reporting an intellectual property infringement. The account you reported won’t see who reported them.</small>
+            </div>
+            <div class="" onclick="samu_close7()" id="myweb7"></div>
+    
+            <div class="samuel8" style="display: none;" id="mynames8"><br><br>
+                <button onclick="samu_open1()" id="mynames1">My profile</button><br>
+                    <button onclick="samu_open2()" id="mynames2">Security</button><br>
+                    <button onclick="samu_open3()" id="mynames3">Terms of use</button><br>
+                    <button onclick="samu_open4()" id="mynames4">Adding account</button><br>
+                    <button onclick="samu_open5()" id="mynames5">Cookies policy</button><br>
+                    <button onclick="samu_open6()" id="mynames6">Staying safe</button><br>
+                    <button onclick="samu_open7()" id="mynames7">Reporting</button><br>
+                    <button>Logout Account</button>
+            </div>
+            <div class="" onclick="samu_close8()" id="myweb8"></div>
+        </div>
+
+        <div class="rightcolumn">
+            <button onclick="samu_open1()" id="mynames1">My profile</button><br>
+            <button onclick="samu_open2()" id="mynames2">Security</button><br>
+            <button onclick="samu_open3()" id="mynames3">Terms of use</button><br>
+            <button onclick="samu_open4()" id="mynames4">Adding account</button><br>
+            <button onclick="samu_open5()" id="mynames5">Cookies policy</button><br>
+            <button onclick="samu_open6()" id="mynames6">Staying safe</button><br>
+            <button onclick="samu_open7()" id="mynames7">Reporting</button><br>
+            <button>Logout Account</button>
+        </div>
+    </section>
+
+
+
+
+
+    <script>
+        function openMenu(){
+            document.getElementById("myname").style.display = "block";
+            document.getElementById("myweb").style.display = "block";
+        }
+        function closeMenu(){
+            document.getElementById("myname").style.display = "none";
+            document.getElementById("myweb").style.display = "none";
+        }
+    </script>
+
+    <script>
+         function samu_open1(){
+            document.getElementById("mynames1").style.display = "block";
+            document.getElementById("mynames2").style.display = "none";
+            document.getElementById("mynames3").style.display = "none";
+            document.getElementById("mynames4").style.display = "none";
+            document.getElementById("mynames5").style.display = "none";
+            document.getElementById("mynames6").style.display = "none";
+            document.getElementById("mynames7").style.display = "none";
+            document.getElementById("mynames8").style.display = "none";
+            document.getElementById("myweb1").style.display = "block";
+        }
+        function samu_close1(){
+            document.getElementById("mynames1").style.display = "none";
+            document.getElementById("myweb1").style.display = "none";
+        }
+        function samu_open2(){
+            document.getElementById("mynames2").style.display = "block";
+            document.getElementById("mynames1").style.display = "none";
+            document.getElementById("mynames3").style.display = "none";
+            document.getElementById("mynames4").style.display = "none";
+            document.getElementById("mynames5").style.display = "none";
+            document.getElementById("mynames6").style.display = "none";
+            document.getElementById("mynames7").style.display = "none";
+            document.getElementById("mynames8").style.display = "none";
+            document.getElementById("myweb2").style.display = "block";
+        }
+        function samu_close2(){
+            document.getElementById("mynames2").style.display = "none";
+            document.getElementById("myweb2").style.display = "none";
+            document.getElementById("mynames1").style.display = "block";
+        }
+        function samu_open3(){
+            document.getElementById("mynames3").style.display = "block";
+            document.getElementById("mynames1").style.display = "none";
+            document.getElementById("mynames2").style.display = "none";
+            document.getElementById("mynames4").style.display = "none";
+            document.getElementById("mynames5").style.display = "none";
+            document.getElementById("mynames6").style.display = "none";
+            document.getElementById("mynames7").style.display = "none";
+            document.getElementById("mynames8").style.display = "none";
+            document.getElementById("myweb3").style.display = "block";
+        }
+        function samu_close3(){
+            document.getElementById("mynames3").style.display = "none";
+            document.getElementById("myweb3").style.display = "none";
+            document.getElementById("mynames1").style.display = "block";
+        }
+        function samu_open4(){
+            document.getElementById("mynames4").style.display = "block";
+            document.getElementById("mynames1").style.display = "none";
+            document.getElementById("mynames2").style.display = "none";
+            document.getElementById("mynames3").style.display = "none";
+            document.getElementById("mynames5").style.display = "none";
+            document.getElementById("mynames6").style.display = "none";
+            document.getElementById("mynames7").style.display = "none";
+            document.getElementById("mynames8").style.display = "none";
+            document.getElementById("myweb4").style.display = "block";
+        }
+        function samu_close4(){
+            document.getElementById("mynames4").style.display = "none";
+            document.getElementById("myweb4").style.display = "none";
+            document.getElementById("mynames1").style.display = "block";
+        }
+        function samu_open5(){
+            document.getElementById("mynames5").style.display = "block";
+            document.getElementById("mynames1").style.display = "none";
+            document.getElementById("mynames2").style.display = "none";
+            document.getElementById("mynames3").style.display = "none";
+            document.getElementById("mynames4").style.display = "none";
+            document.getElementById("mynames6").style.display = "none";
+            document.getElementById("mynames7").style.display = "none";
+            document.getElementById("mynames8").style.display = "none";
+            document.getElementById("myweb5").style.display = "block";
+        }
+        function samu_close5(){
+            document.getElementById("mynames5").style.display = "none";
+            document.getElementById("myweb5").style.display = "none";
+            document.getElementById("mynames1").style.display = "block";
+        }
+        function samu_open6(){
+            document.getElementById("mynames6").style.display = "block";
+            document.getElementById("mynames1").style.display = "none";
+            document.getElementById("mynames2").style.display = "none";
+            document.getElementById("mynames3").style.display = "none";
+            document.getElementById("mynames4").style.display = "none";
+            document.getElementById("mynames5").style.display = "none";
+            document.getElementById("mynames7").style.display = "none";
+            document.getElementById("mynames8").style.display = "none";
+            document.getElementById("myweb6").style.display = "block";
+        }
+        function samu_close6(){
+            document.getElementById("mynames6").style.display = "none";
+            document.getElementById("myweb6").style.display = "none";
+            document.getElementById("mynames1").style.display = "block";
+        }
+        function samu_open7(){
+            document.getElementById("mynames7").style.display = "block";
+            document.getElementById("mynames1").style.display = "none";
+            document.getElementById("mynames2").style.display = "none";
+            document.getElementById("mynames3").style.display = "none";
+            document.getElementById("mynames4").style.display = "none";
+            document.getElementById("mynames5").style.display = "none";
+            document.getElementById("mynames6").style.display = "none";
+            document.getElementById("mynames8").style.display = "none";
+            document.getElementById("myweb7").style.display = "block";
+        }
+        function samu_close7(){
+            document.getElementById("mynames7").style.display = "none";
+            document.getElementById("myweb7").style.display = "none";
+            document.getElementById("mynames1").style.display = "block";
+        }
+        function samu_open8(){
+            document.getElementById("mynames8").style.display = "block";
+            document.getElementById("mynames1").style.display = "none";
+            document.getElementById("mynames2").style.display = "none";
+            document.getElementById("mynames3").style.display = "none";
+            document.getElementById("mynames4").style.display = "none";
+            document.getElementById("mynames5").style.display = "none";
+            document.getElementById("mynames6").style.display = "none";
+            document.getElementById("myweb8").style.display = "block";
+        }
+        function samu_close8(){
+            document.getElementById("mynames8").style.display = "none";
+            document.getElementById("myweb8").style.display = "none";
+        }
+    </script>
+    
+</body>
+</html>
